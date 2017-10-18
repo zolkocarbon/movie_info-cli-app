@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
+#above line tells computer to interpret this file as Ruby file as .rb
+#file extension does not exist
 
 require_relative '../lib/movie_info'
 
-MovieInfo.new.call
+MovieInfo::CLI.new.call
