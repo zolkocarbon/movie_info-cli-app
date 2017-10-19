@@ -5,6 +5,14 @@ class MovieInfo::CLI
     start
   end
 
+  def list
+    puts "AMC Theaters Feature Movies"
+    MovieInfo::Movie.all.each.with_index(1) do |movie_instance, i|
+      puts "#{i}. #{movie_instance.title}"
+    end
+  end
+
+
   def start
     list
     input = nil
@@ -14,7 +22,7 @@ class MovieInfo::CLI
       puts "To exit the program, enter 'exit'."
       input = gets.strip.downcase
       if input.between?(1..MovieInfo::Movie.all-1)
-        scrape_plot(input)
+        movie_plot(input) #will call scrape_plot
       elsif input == "list"
         list
       elsif input != "exit"
@@ -23,9 +31,5 @@ class MovieInfo::CLI
     end
     puts "Have a nice day."
   end
-
-end
-
-
 
 end
