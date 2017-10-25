@@ -22,8 +22,10 @@ class MovieInfo::Scraper
     end
   end
 
-  def self.scrape_plot(link)
-    plot = Nokogiri::HTML(open(link)).css("div.Intro-text p").text
+  def self.scrape_movie_details(link)
+    movie_detail = Nokogiri::HTML(open(link))#.css("div.grid_wrapper")
+    #grid-wrapper u-container u-cf
+    #plot = Nokogiri::HTML(open(link)).css("div.Intro-text p").text
     #binding.pry
   end
 
