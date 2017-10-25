@@ -1,3 +1,5 @@
+require 'pry'
+
 class MovieInfo::Movie
 
   attr_accessor :title, :link, :plot, :duration
@@ -17,8 +19,11 @@ class MovieInfo::Movie
     self.all[input-1]
   end
 
-  def plot
-    @plot ||= MovieInfo::Scraper.scrape_plot(self.link)
+  def movie_details
+    movie_details = MovieInfo::Scraper.scrape_movie_details(self.link)
+    #binding.pry
+    @plot = movie_details.css("div.Intro-text p").text
+    @duration = movie_details.css("li.Headline--eyebrow span.u-separator").text
   end
 
 end
