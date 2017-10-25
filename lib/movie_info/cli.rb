@@ -22,8 +22,11 @@ class MovieInfo::CLI
       puts "To exit the program, enter 'exit'."
       input = gets.strip.downcase
       if input.to_i.between?(1, MovieInfo::Movie.all.length-1)
-        puts "Movie Plot - #{MovieInfo::Movie.find_movie(input.to_i).title}"
-        puts "#{MovieInfo::Movie.find_movie(input.to_i).plot}" #will call find_movie and scrape_plot
+        movie = MovieInfo::Movie.find_movie(input.to_i)
+        movie.movie_details
+        puts "Movie Details - #{movie.title}"
+        puts "Plot: #{movie.plot}"
+        puts "Duration: #{movie.duration}"
         puts "-------------------------------------------------"
       elsif input == "list"
         list
